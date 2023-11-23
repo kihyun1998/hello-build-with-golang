@@ -35,7 +35,8 @@ jobs:
         key: ${{ secrets.SSH_KEY }}
         source: "/home/user/runner1/_work/hello-build-with-golang/hello-build-with-golang/*wadd"
         target: "~/build/"
+
     - name: 🧹 Clean up local directory
-      run: rm -rf /path/to/directory/*
+      run: rm -rf /home/user/runner1/_work/hello-build-with-golang
 
 
