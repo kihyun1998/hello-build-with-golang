@@ -2,7 +2,8 @@ name: Go
 
 on:
   push:
-    branches: [ main ]
+    tags:
+      - 'V*'
 
 jobs:
 
@@ -24,7 +25,13 @@ jobs:
       run: go mod download
 
     - name: 🛠️ Build
-      run: go build -v .
+      run: make build
 
     - name: 💽 Test
       run: go test -v .
+
+    - name: Extract Tag name
+      run:  echo "TAG_NAME=$(echo ${{ github.ref }} | sed 's|refs/tags/||')" >> $GITHUB_ENV
+
+    - name: Use Tag Name
+      run:  echo "Tag Name is $TAG_NAME"
