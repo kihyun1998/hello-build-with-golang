@@ -1,0 +1,30 @@
+name: Go
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+
+  build:
+    runs-on: self-hosted
+
+    steps:
+
+    - name: 💽 Set up Go 1.x
+      uses: actions/setup-go@v2
+      with:
+        go-version: ^1.13
+      id: go
+
+    - name: ✅ Check out code into the Go module directory
+      uses: actions/checkout@v2
+
+    - name: 🚀 Get dependencies
+      run: go mod download
+
+    - name: 🛠️ Build
+      run: go build -v .
+
+    - name: ⚙️ Test
+      run: go test -v .
