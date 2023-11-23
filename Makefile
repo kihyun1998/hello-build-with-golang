@@ -1,4 +1,4 @@
 build:
-	go build -o wadd .
+	go build -o $(TAG_NAME)_wadd
 
 .PHONY: build
