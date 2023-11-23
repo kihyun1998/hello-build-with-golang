@@ -19,9 +19,6 @@ jobs:
     - name: Extract Tag name
       run:  echo "TAG_NAME=$(echo ${{ github.ref }} | sed 's|refs/tags/||')" >> $GITHUB_ENV
 
-    - name: Use Tag Name
-      run:  echo "Tag Name is $TAG_NAME"
-
     - name: 🔥 Get dependencies
       run: go mod download
 
@@ -29,5 +26,14 @@ jobs:
       run: make build
 
     - name: 💽 Test
-      run: go test -v .
+      run: make test
+
+    - name: 🚚 Transfer files use SFTP
+      uses: appleboy/scp-action@master
+      with:
+        host: 192.168.135.80
+        username: root
+        key: ${{ secrets.SSH_KEY }}
+        source: "/home/user/runner1/_work/hello-build-with-golang/hello-build-with-golang/*wadd"
+        target: "~/build/"
 
