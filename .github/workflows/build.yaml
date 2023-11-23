@@ -6,25 +6,25 @@ on:
 
 jobs:
 
-  build:
+  test:
+    name: 🦾 Unit Test
     runs-on: self-hosted
 
     steps:
 
-    - name: 💽 Set up Go 1.x
-      uses: actions/setup-go@v2
-      with:
-        go-version: ^1.13
-      id: go
-
     - name: ✅ Check out code into the Go module directory
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
-    - name: 🚀 Get dependencies
+    - name: ⚙️ Set up Go
+      uses: actions/setup-go@v4
+      with:
+        go-version: '1.21.3'
+
+    - name: 🔥 Get dependencies
       run: go mod download
 
     - name: 🛠️ Build
       run: go build -v .
 
-    - name: ⚙️ Test
+    - name: 💽 Test
       run: go test -v .
