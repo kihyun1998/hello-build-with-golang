@@ -41,6 +41,6 @@ jobs:
         target: "~/build/"
 
     - name: 🧹 Clean up local directory
-      run: rm -rf /home/user/runner1/_work/${{ github.repository }}/${{ github.repository }}/*
+      run: rm -rf ${{ github.workspace }}/*
 
 
