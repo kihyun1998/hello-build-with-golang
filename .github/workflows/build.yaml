@@ -8,7 +8,7 @@ on:
 jobs:
 
   test:
-    name: 🦾 Unit Test
+    name: 🦾 Unit Test & Build
     runs-on: self-hosted
 
     steps:
