@@ -39,6 +39,7 @@ jobs:
         key: ${{ secrets.SSH_KEY }}
         source: "${{ github.workspace }}/*_w*"
         target: "~/build/${{ steps.extract_tag.outputs.tag_name }}"
+        rm: true
 
     - name: 🧹 Clean up local directory
       run: rm -rf ${{ github.workspace }}/*
