@@ -1,16 +1,16 @@
 package calc
 
 import (
-	"hello-build-with-golang/util"
+	"hello-build-with-golang/wsub/util"
 	"testing"
 
 	"github.com/stretchr/testify/require"
 )
 
-func TestAdd(t *testing.T) {
+func TestSub(t *testing.T) {
 	num1 := util.RandomInt(1, 1000)
 	num2 := util.RandomInt(1, 1000)
 
-	result := Add(num1, num2)
-	require.Equal(t, result, num1+num2)
+	result := Sub(num1, num2)
+	require.Equal(t, result, num1-num2)
 }
